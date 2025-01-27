@@ -23,7 +23,6 @@ public class App {
             for (CategoriaDTO cate : dao.readAll()) {
                 System.out.println(cate.toString());
             }
-
             // Testeo para el getMaxRow Categoria
             System.out.println("- ".repeat(25));
             Integer maxRow1 = dao.getMaxRow();
@@ -35,7 +34,6 @@ public class App {
             for (AdministradorTipoDTO adminTip : dao2.readAll()) {
                 System.out.println(adminTip.toString());
             }
-
             //Testeo para el getMaxRow AdministradorTipo
             System.out.println("- ".repeat(25));
             Integer maxRow2 = dao2.getMaxRow();
@@ -64,7 +62,6 @@ public class App {
             System.out.println("- ".repeat(25));
             Integer maxRow4 = dao4.getMaxRow();
             System.out.println("Número máximo de filas: " + maxRow4);
-        
 
             // Testeo de Dao Administrador 
             System.out.println();
@@ -73,7 +70,6 @@ public class App {
             for (AdministradorDTO admin : dao5.readAll()) {
                 System.out.println(admin.toString());
             }
-
             // Testeo para el getMaxRow AdministradorTipo
             System.out.println("- ".repeat(25));
             Integer maxRow5 = dao5.getMaxRow();
