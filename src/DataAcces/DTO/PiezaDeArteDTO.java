@@ -26,10 +26,11 @@ public class PiezaDeArteDTO {
     public PiezaDeArteDTO() {
     }
 
-    public PiezaDeArteDTO(String BarCode, String Nombre, String Descripcion, Double PrecioReplica
+    public PiezaDeArteDTO(String BarCode, String Nombre,String Autor, String Descripcion, Double PrecioReplica
                         , Integer idCategoria, Integer idSeccion) {
         this.BarCode = BarCode;
         this.Nombre = Nombre;
+        this.Autor = Autor;
         this.Descripcion = Descripcion;
         this.PrecioReplica = PrecioReplica;
         this.idCategoria = idCategoria;

@@ -123,8 +123,10 @@ public class SeccionDAO extends SQLiteDataHelper implements IDAOint<SeccionDTO> 
                 + " ,Estado          "
                 + " ,FechaCrea       "
                 + " ,FechaModifica   "
+                + " From Seccion     "
                 + " WHERE Estado='A' "
                 + " AND   idSeccion = " + id.toString();
+                // + " AND   idSeccion = " + id;
 
         try {
             Connection  conn = openConnection();

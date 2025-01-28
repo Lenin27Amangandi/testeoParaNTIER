@@ -2,9 +2,7 @@ package BusinessLogic;
 
 import java.util.List;
 
-import DataAcces.DAO.CategoriaDAO;
 import DataAcces.DAO.SeccionDAO;
-import DataAcces.DTO.CategoriaDTO;
 import DataAcces.DTO.SeccionDTO;
 
 public class SeccionBL {

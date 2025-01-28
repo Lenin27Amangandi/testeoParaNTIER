@@ -51,6 +51,16 @@ CREATE TABLE Administrador(
     ,FOREIGN KEY (Tipo) REFERENCES AdministradorTipo(idAdministradorTipo)
 );
 
+SELECT idAdministrador 
+                , Codigo              
+                , Tipo                
+                , Estado              
+                , FechaCrea           
+                , FechaModifica       
+                FROM Administrador 
+                WHERE Estado='A' 
+                AND Codigo = "1753193828123";
+
 INSERT INTO Administrador (Codigo, Tipo)
     VALUES 
     ('1234567890111' , 1)
@@ -88,6 +98,15 @@ INSERT INTO Seccion (Nombre)
     ,('Clasico')
     ,('Contemporaneo');
 
+SELECT idSeccion 
+,Nombre          
+,Estado          
+,FechaCrea       
+,FechaModifica
+FROM Seccion   
+WHERE Estado='A' 
+AND   idSeccion = 3;
+
 CREATE TABLE PiezaDeArte(
     idPieza          INTEGER PRIMARY KEY AUTOINCREMENT
     ,BarCode            TEXT CHECK(length(BarCode) = 13) NOT NULL UNIQUE
@@ -104,6 +123,22 @@ CREATE TABLE PiezaDeArte(
     ,FOREIGN KEY (idCategoria) REFERENCES Categoria(idCategoria)
     ,FOREIGN KEY (idSeccion) REFERENCES Seccion(idSeccion)
 );
+
+
+    SELECT idPieza
+                ,BarCode          
+                ,Nombre           
+                ,Autor            
+                ,Descripcion      
+                ,PrecioReplica    
+                ,idCategoria      
+                ,idSeccion        
+                ,Estado           
+                ,FechaCrea        
+                ,FechaModifica    
+    From PiezaDeArte
+    WHERE Estado='A'
+    AND   BarCode = "0234567890123";
 
 INSERT INTO PiezaDeArte (BarCode, Nombre, Autor, Descripcion, PrecioReplica, idCategoria, idSeccion)
     VALUES 
@@ -128,3 +163,4 @@ INSERT INTO PiezaDeArte (BarCode, Nombre, Autor, Descripcion, PrecioReplica, idC
         Categoria c ON p.idCategoria = c.idCategoria
     JOIN 
         Seccion s ON p.idSeccion = s.idSeccion;
+

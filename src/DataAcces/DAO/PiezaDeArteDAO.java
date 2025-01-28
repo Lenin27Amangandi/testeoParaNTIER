@@ -151,7 +151,7 @@ public class PiezaDeArteDAO extends SQLiteDataHelper implements IDAO<PiezaDeArte
                 + " ,FechaModifica    "
                 + " From PiezaDeArte  "
                 + " WHERE Estado='A' "
-                + " AND   BarCode = " + barcode;
+                + "AND BarCode = '" + barcode + "'";
 
                 try {
                     Connection conn = openConnection();

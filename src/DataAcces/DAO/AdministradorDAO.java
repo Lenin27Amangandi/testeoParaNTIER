@@ -23,9 +23,7 @@ public class AdministradorDAO extends SQLiteDataHelper implements IDAO<Administr
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setString(1, entity.getCodigo());
             pstmt.setInt(2, entity.getTipo());
-
             pstmt.executeUpdate();
-
             return true;
         } catch (SQLException e) {
             throw e;
@@ -105,13 +103,29 @@ public class AdministradorDAO extends SQLiteDataHelper implements IDAO<Administr
     @Override
     public AdministradorDTO readBy(String barcode) throws Exception {
         AdministradorDTO administradorDTO = new AdministradorDTO();
+
+        // SELECT idAdministrador 
+        //         , Codigo              
+        //         , Tipo                
+        //         , Estado              
+        //         , FechaCrea           
+        //         , FechaModifica       
+        //         FROM Administrador 
+        //         WHERE Estado='A' 
+        //         AND Codigo = "1753193828123";
+
         String query = "SELECT idAdministrador "
                 + ", Codigo              "
                 + ", Tipo                "
                 + ", Estado              "
                 + ", FechaCrea           "
                 + ", FechaModifica       "
-                + "FROM Administrador WHERE Estado = 'A' AND Codigo = " + barcode;
+                + " FROM Administrador "
+                + " WHERE Estado='A' "
+                + "AND Codigo = '" + barcode + "'";
+
+
+
         try {
             Connection conn = openConnection();
             Statement stmt = conn.createStatement();
@@ -125,10 +139,10 @@ public class AdministradorDAO extends SQLiteDataHelper implements IDAO<Administr
                                 rs.getString(5),
                                 rs.getString(6));
                     }
-                } catch (Exception e) {
+            } catch (Exception e) {
                 throw e;    
-                }
-        return null;
+            }
+        return administradorDTO;
     }
 
     @Override
