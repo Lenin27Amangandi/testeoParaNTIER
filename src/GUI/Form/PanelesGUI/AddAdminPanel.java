@@ -92,6 +92,7 @@ public class AddAdminPanel extends JPanel {
         SwingUtilities.invokeLater(() -> barcodeField.requestFocusInWindow());
     }
 
+
     private void processBarcode(String barcode) throws Exception {
         if (this.mode) {
             addAdmin(barcode);
@@ -122,14 +123,34 @@ public class AddAdminPanel extends JPanel {
         }
     }
 
-        private void addAdmin(String barcode) throws Exception {
+        // private void addAdmin(String barcode) throws Exception {
+    //     try {
+    //         boolean exito = administradorbl.add(new AdministradorDTO(barcode, 1));
+    //         if (exito) {
+    //             messageLabel.setText("Administrador agregado con éxito en la base de datos");
+    //         }
+    //     } catch (Exception e) {
+    //         messageLabel.setText("Ups... No se pudo agregar el administrador");
+    //         e.printStackTrace();
+    //     }
+    // }
+
+    private void addAdmin(String barcode) throws Exception {
         try {
-            boolean exito = administradorbl.add(new AdministradorDTO(barcode, 1));
+    
+            // Crear un nuevo AdministradorDTO
+            AdministradorDTO admin = new AdministradorDTO(barcode, 1);
+            // Intentar agregar el administrador
+            boolean exito = administradorbl.add(admin);
+            // Verificar el resultado de la operación
             if (exito) {
                 messageLabel.setText("Administrador agregado con éxito en la base de datos");
+            } else {
+                messageLabel.setText("No se pudo agregar el administrador");
             }
         } catch (Exception e) {
-            messageLabel.setText("Ups... No se pudo agregar el administrador");
+            // Mostrar mensaje de error más detallado
+            messageLabel.setText("Ups... No se pudo agregar el administrador: " + e.getMessage());
             e.printStackTrace();
         }
     }

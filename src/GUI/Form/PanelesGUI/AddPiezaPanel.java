@@ -126,7 +126,6 @@ public class AddPiezaPanel extends JPanel {
                 ex.printStackTrace();
             }
         });
-
         tableModel = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -134,11 +133,11 @@ public class AddPiezaPanel extends JPanel {
             }
         };
 
-        tableModel.addColumn("Código de barras");
+        tableModel.addColumn("Barcode");
         tableModel.addColumn("Nombre de la Pintura");
-        tableModel.addColumn("Autor ");
-        tableModel.addColumn("Descripcion del producto");
-        tableModel.addColumn("Precio De su Replica");
+        tableModel.addColumn("Autor");
+        tableModel.addColumn("Descripcion");
+        tableModel.addColumn("PrecioReplica");
         tableModel.addColumn("Sección del producto");
         tableModel.addColumn("Categoría del producto");
 
@@ -171,7 +170,6 @@ public class AddPiezaPanel extends JPanel {
             }
         });
         productTable.setFillsViewportHeight(true);
-
         // Agregar la tabla a un JScrollPane
         JScrollPane tableScrollPane = new JScrollPane(productTable);
 
@@ -253,7 +251,6 @@ public class AddPiezaPanel extends JPanel {
         // Agregar el panel sur al layout
         add(southPanel, BorderLayout.SOUTH);
 
-
         // northPanel.add(btnADD);
         // northPanel.add(btnMOD);
         // northPanel.add(btnDEL);
@@ -297,7 +294,6 @@ public class AddPiezaPanel extends JPanel {
         try {
             // Obtener los productos de la base de datos
             List<PiezaDeArteDTO> productos = piezaDeArteBL.getAll();
-
             // Agregar los productos a la tabla
             for (PiezaDeArteDTO producto : productos) {
                 tableModel.addRow(new Object[] {
@@ -315,6 +311,42 @@ public class AddPiezaPanel extends JPanel {
         }
     }
 
+    private void updateProductTable() {
+        tableModel.setRowCount(0); // Limpiar la tabla
+        loadProductsFromDatabase(); // Recargar los datos de la base de datos
+    }
+    // private void editProduct() {
+    // int selectedRow = productTable.getSelectedRow();
+    // if (selectedRow != -1) {
+    // String barcode = (String) tableModel.getValueAt(selectedRow, 0);
+    // String nombre = nombreField.getText();
+    // String autor = autorField.getText();
+    // String descripcion = descripcionField.getText();
+    // double precio = Double.parseDouble(precioField.getText());
+    // int seccion = Integer.parseInt(seccionField.getText());
+    // int categoria = Integer.parseInt(categoriaField.getText());
+
+    // try {
+    // boolean exito = piezaDeArteBL.update(new PiezaDeArteDTO(barcode, nombre,
+    // autor, descripcion, precio, seccion, categoria));
+    // if (exito) {
+    // tableModel.setValueAt(nombre, selectedRow, 1);
+    // tableModel.setValueAt(autor, selectedRow, 2);
+    // tableModel.setValueAt(descripcion, selectedRow, 3);
+    // tableModel.setValueAt(precio, selectedRow, 4);
+    // tableModel.setValueAt(seccion, selectedRow, 5);
+    // tableModel.setValueAt(categoria, selectedRow, 6);
+    // messageLabel.setText("Producto editado con éxito en la base de datos");
+    // }
+    // } catch (Exception e) {
+    // messageLabel.setText("Ups... No se pudo editar el producto");
+    // e.printStackTrace();
+    // }
+    // } else {
+    // messageLabel.setText("Por favor, selecciona un producto para editar");
+    // }
+    // }
+
     private void editProduct() {
         int selectedRow = productTable.getSelectedRow();
         if (selectedRow != -1) {
@@ -327,16 +359,15 @@ public class AddPiezaPanel extends JPanel {
             int categoria = Integer.parseInt(categoriaField.getText());
 
             try {
-                boolean exito = piezaDeArteBL.update(new PiezaDeArteDTO(barcode, nombre, autor, descripcion, precio, categoria, seccion));
-                // .update(new PiezaDeArteDTO(barcode, nombre, autor, descripcion, precio, categoria, seccion));
+                boolean exito = piezaDeArteBL.update(new PiezaDeArteDTO(barcode, nombre, autor, descripcion, precio, seccion, categoria));
                 if (exito) {
-                    messageLabel.setText("Producto editado con éxito en la base de datos");
                     tableModel.setValueAt(nombre, selectedRow, 1);
                     tableModel.setValueAt(autor, selectedRow, 2);
                     tableModel.setValueAt(descripcion, selectedRow, 3);
                     tableModel.setValueAt(precio, selectedRow, 4);
-                    tableModel.setValueAt(categoria, selectedRow, 5);
-                    tableModel.setValueAt(seccion, selectedRow, 6);
+                    tableModel.setValueAt(seccion, selectedRow, 5);
+                    tableModel.setValueAt(categoria, selectedRow, 6);
+                    messageLabel.setText("Producto editado con éxito en la base de datos");
                 }
             } catch (Exception e) {
                 messageLabel.setText("Ups... No se pudo editar el producto");

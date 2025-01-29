@@ -77,15 +77,20 @@ public class PiezaDeArteDAO extends SQLiteDataHelper implements IDAO<PiezaDeArte
     public boolean update(PiezaDeArteDTO entity) throws Exception {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-        String query = "UPDATE PiezaDeArte SET Nombre = ?, Descripcion = ? , PrecioReplica = ?, FechaModifica = ? WHERE BarCode = ?";
+        // SET Nombre = 'Noche Estrelladaaa', Autor = 'Vincent van Gogh', Descripcion = 'Pintura postimpresionista', PrecioReplica = 25.00, idCategoria = 1, idSeccion = 3, FechaModifica = datetime('now','localtime') 
+        // WHERE BarCode = '0234567890125';
+            String query = "UPDATE PiezaDeArte SET Nombre = ?, Autor = ? ,Descripcion = ? , PrecioReplica = ? , idSeccion = ?, idCategoria = ? ,  FechaModifica = ? WHERE BarCode = ?";
         try {
             Connection conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setString(1, entity.getNombre());
-            pstmt.setString(2, entity.getDescripcion());
-            pstmt.setDouble(3, entity.getPrecioReplica());
-            pstmt.setString(4, dtf.format(now).toString());
-            pstmt.setString(5, entity.getBarCode());
+            pstmt.setString(2, entity.getAutor());
+            pstmt.setString(3, entity.getDescripcion());
+            pstmt.setDouble(4, entity.getPrecioReplica());
+            pstmt.setInt(5, entity.getIdSeccion());
+            pstmt.setInt(6, entity.getIdCategoria());
+            pstmt.setString(7, dtf.format(now).toString());
+            pstmt.setString(8, entity.getBarCode());
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {

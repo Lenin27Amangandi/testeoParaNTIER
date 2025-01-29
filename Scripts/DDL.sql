@@ -154,6 +154,11 @@ UPDATE PiezaDeArte
 SET Nombre = 'El Grito', Descripcion = 'Pintura expresionista', PrecioReplica = 15.00, FechaModifica = datetime('now','localtime') 
 WHERE BarCode = '0234567890123';
 
+-- UPDATE PiezaDeArte SET Nombre = ?, Autor = ? ,Descripcion = ? , PrecioReplica = ? , idSeccion = ?, idCategoria = ? ,  FechaModifica = ? WHERE BarCode = ?
+    UPDATE PiezaDeArte 
+    SET Nombre = 'Noche Estrelladaaa', Autor = 'Vincent van Gogh', Descripcion = 'Pintura postimpresionista', PrecioReplica = 25.00, idCategoria = 1, idSeccion = 3, FechaModifica = datetime('now','localtime') 
+    WHERE BarCode = '0234567890125';
+
     SELECT
         p.idPieza,
         p.BarCode,

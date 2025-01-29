@@ -136,13 +136,14 @@ public class App {
             // Testing BL Admin
             // AdministradorBL adminBL = new AdministradorBL();
             // System.out.println("- ".repeat(25));
-            // // adminBL.add(new AdministradorDTO("1234657891235", 2));
+            // // // adminBL.add(new AdministradorDTO("1234657891212", 2));
             // System.out.println(adminBL.getAll());
 
 
 
             // new SplashForm();
             new MainForm("Acces Scand Art", true);
+
 
             //
         } catch (Exception e) {
