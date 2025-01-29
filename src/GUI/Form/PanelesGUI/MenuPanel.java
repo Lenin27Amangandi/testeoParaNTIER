@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.text.Style;
@@ -26,6 +27,8 @@ public class MenuPanel extends JPanel {
     private PrjButton btnAdministrador = new PrjButton("Login");
     private JPanel panelDeAdorno = new JPanel();
     private Image fondo;
+
+
 
     /**
      * Constructor de la clase MenuPanel.
@@ -52,8 +55,8 @@ public class MenuPanel extends JPanel {
     private void showEscaneoPanel() {
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
         if (frame != null) {
-            frame.setContentPane(new EscaneoPanel(this)); // Pasar 'this' para el botón 'Regresar al menu'
-            // frame.setContentPane(new EscaneoPanelMejorado(this)); // Pasar 'this' para el botón 'Regresar al menu'
+            // frame.setContentPane(new EscaneoPanel(this)); // Pasar 'this' para el botón 'Regresar al menu'
+            frame.setContentPane(new EscaneoPanelMejorado(this)); // Pasar 'this' para el botón 'Regresar al menu'
             frame.revalidate();
             frame.repaint();
         }

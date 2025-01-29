@@ -22,6 +22,7 @@ public abstract class Styles {
 
     // public static final Color COLOR_BACKGROUND= new Color(0x014f01); // Este a cambiar
     public static final Color COLOR_BACKGROUND= new Color(0x4754a1); // Algo Morado Azul
+    public static final Color COLOR_BACKGROUND2= new Color(0xF38FF4); // Algo Morado Azul
     // public static final Color COLOR_FOREGROUND = new Color(0xf7c207); // Este a cambiar
     // public static final Color COLOR_FOREGROUND = new Color(0x996d74); // Algo Rosa
     public static final Color COLOR_FOREGROUND = new Color(0xaa9beb); // Algo Rosa
