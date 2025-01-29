@@ -133,6 +133,7 @@ public class App {
             // piezaBL.getNombreBy("0234567890124");
             // System.out.println(piezaBL.getNombreBy("0234567890124"));
             // System.out.println(piezaBL.getPrecioBy("0234567890124"));
+            // System.out.println(piezaBL.getAutorBy("0234567890124"));
 
             // Testing BL Admin
             // AdministradorBL adminBL = new AdministradorBL();

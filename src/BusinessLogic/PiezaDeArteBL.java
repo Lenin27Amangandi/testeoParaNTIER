@@ -26,10 +26,10 @@ public class PiezaDeArteBL {
         return nombre;
     }
 
-    // public String getAutorBy(String barcode) throws Exception {
-    //     String nombreAutor = piezaDeArteDAO.readAutorBy(barcode);
-    //     return nombreAutor;
-    // }
+    public String getAutorBy(String barcode) throws Exception {
+        String nombreAutor = piezaDeArteDAO.readAutorBy(barcode);
+        return nombreAutor;
+    }
 
     // public String getDescripcionBy(String barcode) throws Exception {
     //     String descripcionPieza = piezaDeArteDAO.readDescripcionBy(barcode);

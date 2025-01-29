@@ -53,6 +53,7 @@ public class MenuPanel extends JPanel {
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
         if (frame != null) {
             frame.setContentPane(new EscaneoPanel(this)); // Pasar 'this' para el botón 'Regresar al menu'
+            // frame.setContentPane(new EscaneoPanelMejorado(this)); // Pasar 'this' para el botón 'Regresar al menu'
             frame.revalidate();
             frame.repaint();
         }

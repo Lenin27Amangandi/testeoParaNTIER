@@ -22,6 +22,7 @@ public class PiezaDeArteDTO {
     private String Estado;
     private String FechaCrea;
     private String FechaModifica;
+    private int comodin;
 
     public PiezaDeArteDTO() {
     }
@@ -34,9 +35,9 @@ public class PiezaDeArteDTO {
         PrecioReplica = precioReplica;
     }
 
-    public PiezaDeArteDTO(String descripcion, String autor) {
-        Descripcion = descripcion;
+    public PiezaDeArteDTO(String autor, int comodin) {
         Autor = autor;
+        comodin=comodin;
     }
 
     public PiezaDeArteDTO(String BarCode, String Nombre, String Autor, String Descripcion, Double PrecioReplica,

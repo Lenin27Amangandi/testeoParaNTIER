@@ -53,23 +53,26 @@ public class PiezaDeArteDAO extends SQLiteDataHelper implements IDAO<PiezaDeArte
         return nombre;
     }
 
-    // public String readAutorBy(String barcode)throws Exception {
-    //     PiezaDeArteDTO piezaDeArteDTO=new PiezaDeArteDTO();
-    //     String query = "SELECT Autor FROM PiezaDeArte WHERE Estado = 'A' AND BarCode = "+ "'" +barcode+"'";
-    //     String nombreAutor;
-    //     try {
-    //         Connection conn = openConnection();
-    //         Statement stmt = conn.createStatement();
-    //         ResultSet rs = stmt.executeQuery(query);
-    //         while (rs.next()) {
-    //             piezaDeArteDTO = new PiezaDeArteDTO(rs.getString(1));
-    //         }
-    //         nombreAutor = piezaDeArteDTO.getAutor();
-    //     } catch (Exception e) {
-    //         throw e;
-    //     }
-    //     return nombreAutor;
-    // }
+    
+    public String readAutorBy(String barcode)throws Exception {
+        PiezaDeArteDTO piezaDeArteDTO=new PiezaDeArteDTO();
+        String query = "SELECT Autor FROM PiezaDeArte WHERE Estado = 'A' AND BarCode = "+ "'" + barcode+"'";
+        String nombreAutor;
+        try {
+            Connection conn = openConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                piezaDeArteDTO = new PiezaDeArteDTO(
+                    rs.getString(1)
+                    , 0);
+            }
+            nombreAutor = piezaDeArteDTO.getAutor();
+        } catch (Exception e) {
+            throw e;
+        }
+        return nombreAutor;
+    }
 
     // public String readAutorBy(String barcode) throws Exception {
     //     String query = "SELECT Autor FROM PiezaDeArte WHERE Estado = 'A' AND BarCode = ?";

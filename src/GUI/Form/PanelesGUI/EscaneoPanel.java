@@ -19,7 +19,7 @@ public class EscaneoPanel extends JPanel {
 
     private JLabel nameLabel;
     private JLabel priceLabel;
-    // private JLabel autorLabel;
+    private JLabel autorLabel;
     // private JLabel descripcionLabel;
 
     public PrjTextBox barcodeField;
@@ -29,7 +29,6 @@ public class EscaneoPanel extends JPanel {
     private MenuPanel menuPanel;
     private Image fondo;
 
-    // SwingUtilities.invokeLater(()->barcodeField.requestFocusInWindow());
 
     public EscaneoPanel(MenuPanel menuPanel) {
         priceLabel = new JLabel();
@@ -46,9 +45,9 @@ public class EscaneoPanel extends JPanel {
         priceLabel.setFont(Styles.FONT_BOLD_24);
         priceLabel.setForeground(Styles.COLOR_FOREGROUND);
 
-        // autorLabel = new JLabel("...", SwingConstants.CENTER);
-        // autorLabel.setFont(Styles.FONT_BOLD_24);
-        // autorLabel.setForeground(Styles.COLOR_FOREGROUND);
+        autorLabel = new JLabel("...", SwingConstants.CENTER);
+        autorLabel.setFont(Styles.FONT_BOLD_24);
+        autorLabel.setForeground(Styles.COLOR_FOREGROUND);
 
         // descripcionLabel = new JLabel("...", SwingConstants.CENTER);
         // descripcionLabel.setFont(Styles.FONT_BOLD_24);
@@ -62,10 +61,10 @@ public class EscaneoPanel extends JPanel {
         northPanel.setPreferredSize(new Dimension(200, 100));
         northPanel.add(nameLabel, BorderLayout.CENTER);
 
-        // northPanel.add(autorLabel,BorderLayout.WEST);
-
+        
         add(northPanel, BorderLayout.NORTH);
-        add(priceLabel, BorderLayout.WEST);
+        add(priceLabel, BorderLayout.CENTER);
+        northPanel.add(autorLabel,BorderLayout.WEST);
         // add(descripcionLabel, BorderLayout.CENTER);
 
         barcodeField = new PrjTextBox();
@@ -94,7 +93,7 @@ public class EscaneoPanel extends JPanel {
                 barcodeField.setText("");
             }
         });
-
+        SwingUtilities.invokeLater(()->barcodeField.requestFocusInWindow());
         SwingUtilities.invokeLater(() -> barcodeField.requestFocusInWindow());
 
     }
@@ -102,12 +101,12 @@ public class EscaneoPanel extends JPanel {
     private void processBarcode(String barcode) throws Exception {
         String nombre = piezabl.getNombreBy(barcode);
         String precio = piezabl.getPrecioBy(barcode);
-        // String autor = piezabl.getAutorBy(barcode);
+        String autor = piezabl.getAutorBy(barcode);
         // String descripcion = piezabl.getDescripcionBy(barcode);
 
         nameLabel.setText("Nombre de la Pieza: " + nombre + "\n");
         priceLabel.setText("Precio Replica: " + precio + "\n");
-        // autorLabel.setText("Autor: "+autor+"\n");
+        autorLabel.setText("Autor: "+ autor +"\n");
         // descripcionLabel.setText("Descripcion: "+ descripcion+ "\n");
     }
 
