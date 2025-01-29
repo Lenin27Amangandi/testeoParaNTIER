@@ -31,10 +31,10 @@ public class PiezaDeArteBL {
         return nombreAutor;
     }
 
-    // public String getDescripcionBy(String barcode) throws Exception {
-    //     String descripcionPieza = piezaDeArteDAO.readDescripcionBy(barcode);
-    //     return descripcionPieza;
-    // }
+    public String getDescripcionBy(String barcode) throws Exception {
+        String descripcionPieza = piezaDeArteDAO.readDescripcionBy(barcode);
+        return descripcionPieza;
+    }
 
     public boolean add(PiezaDeArteDTO piezaDeArteDTO) throws Exception {
         return piezaDeArteDAO.create(piezaDeArteDTO);

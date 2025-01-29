@@ -40,6 +40,11 @@ public class PiezaDeArteDTO {
         comodin=comodin;
     }
 
+    public PiezaDeArteDTO(String descripcion, int comodin, Boolean comodin2) {
+        Descripcion = descripcion;
+        comodin=comodin;
+    }
+
     public PiezaDeArteDTO(String BarCode, String Nombre, String Autor, String Descripcion, Double PrecioReplica,
             Integer idSeccion, Integer idCategoria) {
         this.BarCode = BarCode;

@@ -20,7 +20,7 @@ public class EscaneoPanel extends JPanel {
     private JLabel nameLabel;
     private JLabel priceLabel;
     private JLabel autorLabel;
-    // private JLabel descripcionLabel;
+    private JLabel descripcionLabel;
 
     public PrjTextBox barcodeField;
 
@@ -49,9 +49,9 @@ public class EscaneoPanel extends JPanel {
         autorLabel.setFont(Styles.FONT_BOLD_24);
         autorLabel.setForeground(Styles.COLOR_FOREGROUND);
 
-        // descripcionLabel = new JLabel("...", SwingConstants.CENTER);
-        // descripcionLabel.setFont(Styles.FONT_BOLD_24);
-        // descripcionLabel.setForeground(Styles.COLOR_FOREGROUND);
+        descripcionLabel = new JLabel("...", SwingConstants.CENTER);
+        descripcionLabel.setFont(Styles.FONT_BOLD_24);
+        descripcionLabel.setForeground(Styles.COLOR_FOREGROUND);
 
 
         JPanel northPanel = new JPanel();
@@ -63,9 +63,9 @@ public class EscaneoPanel extends JPanel {
 
         
         add(northPanel, BorderLayout.NORTH);
-        add(priceLabel, BorderLayout.CENTER);
+        add(priceLabel, BorderLayout.WEST);
         northPanel.add(autorLabel,BorderLayout.WEST);
-        // add(descripcionLabel, BorderLayout.CENTER);
+        add(descripcionLabel, BorderLayout.EAST);
 
         barcodeField = new PrjTextBox();
         barcodeField.setPreferredSize(new Dimension(200, 30));
@@ -87,8 +87,8 @@ public class EscaneoPanel extends JPanel {
 
                     nameLabel.setText(" ... ");
                     priceLabel.setText("Vuelva a escanear nuevamente!");
-                    // autorLabel.setText("Ningun Autor");
-                    // descripcionLabel.setText(" ... ");
+                    autorLabel.setText("Ningun Autor");
+                    descripcionLabel.setText(" ... ");
                 }
                 barcodeField.setText("");
             }
@@ -102,12 +102,12 @@ public class EscaneoPanel extends JPanel {
         String nombre = piezabl.getNombreBy(barcode);
         String precio = piezabl.getPrecioBy(barcode);
         String autor = piezabl.getAutorBy(barcode);
-        // String descripcion = piezabl.getDescripcionBy(barcode);
+        String descripcion = piezabl.getDescripcionBy(barcode);
 
         nameLabel.setText("Nombre de la Pieza: " + nombre + "\n");
         priceLabel.setText("Precio Replica: " + precio + "\n");
         autorLabel.setText("Autor: "+ autor +"\n");
-        // descripcionLabel.setText("Descripcion: "+ descripcion+ "\n");
+        descripcionLabel.setText("Descripcion: "+ descripcion+ "\n");
     }
 
     private void showMenuPanel() {
