@@ -148,6 +148,11 @@ INSERT INTO PiezaDeArte (BarCode, Nombre, Autor, Descripcion, PrecioReplica, idC
     ,('0234567890125'   , 'La persistencia de la memoria'    , 'Salvador Dali'  , 'Pintura al oleo', 10.90, 1, 3)
     ,('0234567890126'   , 'ArtCyberpunk', 'Desconocido'      , 'Fotografia Elaborada Por IA', 05.50, 3, 3);
 
+-- "UPDATE PiezaDeArte SET Nombre = ?, Descripcion = ? , PrecioReplica = ?, FechaModifica = ? WHERE BarCode = ?";
+
+UPDATE PiezaDeArte 
+SET Nombre = 'El Grito', Descripcion = 'Pintura expresionista', PrecioReplica = 15.00, FechaModifica = datetime('now','localtime') 
+WHERE BarCode = '0234567890123';
 
     SELECT
         p.idPieza,

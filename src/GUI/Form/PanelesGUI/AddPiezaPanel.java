@@ -73,7 +73,7 @@ public class AddPiezaPanel extends JPanel {
         autorField.setBackground(Styles.COLOR_FONT_LIGHT);
 
         descripcionField = new PrjTextBox();
-        descripcionField.setPreferredSize(new Dimension(200, 30));
+        descripcionField.setPreferredSize(new Dimension(300, 400));
         descripcionField.setBackground(Styles.COLOR_FONT_LIGHT);
 
         precioField = new PrjTextBox();
@@ -142,8 +142,6 @@ public class AddPiezaPanel extends JPanel {
         tableModel.addColumn("Sección del producto");
         tableModel.addColumn("Categoría del producto");
 
-
-        
         productTable = new JTable(tableModel);
         productTable.setPreferredScrollableViewportSize(new Dimension(500, 300));
         productTable.setSelectionForeground(Styles.COLOR_FOREGROUND);
@@ -178,17 +176,13 @@ public class AddPiezaPanel extends JPanel {
         JScrollPane tableScrollPane = new JScrollPane(productTable);
 
         // Agregar el JScrollPane al panel
-        add(tableScrollPane, BorderLayout.EAST);
-
-        // Cargar los datos de la base de datos en la tabla
-        loadProductsFromDatabase();
+        add(tableScrollPane, BorderLayout.WEST); // Ponerlo al este
 
         // Cargar los datos de la base de datos en la tabla
         loadProductsFromDatabase();
 
         JPanel northPanel = new JPanel();
         northPanel = paintPanel(northPanel);
-
         northPanel.setLayout(new FlowLayout());
         // ...
 
@@ -197,113 +191,73 @@ public class AddPiezaPanel extends JPanel {
         centerPanel = paintPanel(centerPanel);
         GridBagConstraints gbc = new GridBagConstraints();
 
-        gbc.insets = new Insets(5, 5, 5, 5); // add some padding around each component
+        gbc.insets = new Insets(5, 5, 5, 5); // Espaciado
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
+        // Código de barras
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.LINE_START;
-
-        JLabel info1 = new JLabel();
-        info1.setText("Codigo de Barras:");
-        info1.setForeground(Styles.COLOR_FONT);
-        info1.setFont(Styles.FONT);
-        centerPanel.add(info1, gbc);
-
-        gbc.gridx = 0;
+        centerPanel.add(new JLabel("Código de Barras:"), gbc);
         gbc.gridy = 1;
-        gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
         centerPanel.add(barcodeField, gbc);
 
-        gbc.gridx = 0;
+        // Nombre
         gbc.gridy = 2;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        JLabel info2 = new JLabel();
-        info2.setText("Nombre del Producto:");
-        info2.setForeground(Styles.COLOR_FONT);
-        info2.setFont(Styles.FONT);
-        centerPanel.add(info2, gbc);
-
-        gbc.gridx = 0;
+        centerPanel.add(new JLabel("Nombre del Producto:"), gbc);
         gbc.gridy = 3;
-        gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
         centerPanel.add(nombreField, gbc);
 
-        gbc.gridx = 0;
+        // Precio
         gbc.gridy = 4;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        JLabel info3 = new JLabel();
-        info3.setText("Precio del Producto:");
-        info3.setForeground(Styles.COLOR_FONT);
-        info3.setFont(Styles.FONT);
-
-        centerPanel.add(info3, gbc);
-
-        gbc.gridx = 0;
+        centerPanel.add(new JLabel("Precio del Producto:"), gbc);
         gbc.gridy = 5;
-        gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
         centerPanel.add(precioField, gbc);
 
-        gbc.gridx = 0;
+        // Sección
         gbc.gridy = 6;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        JLabel info4 = new JLabel();
-        info4.setText("Seccion");
-        info4.setForeground(Styles.COLOR_FONT);
-        info4.setFont(Styles.FONT);
-        centerPanel.add(info4, gbc);
-
-        gbc.gridx = 0;
+        centerPanel.add(new JLabel("Sección:"), gbc);
         gbc.gridy = 7;
-        gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
         centerPanel.add(seccionField, gbc);
 
-        gbc.gridx = 0;
+        // Categoría
         gbc.gridy = 8;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        JLabel info5 = new JLabel();
-        info5.setText("Categoria del producto:");
-        info5.setForeground(Styles.COLOR_FONT);
-        info5.setFont(Styles.FONT);
-        centerPanel.add(info5, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 8;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        JLabel info6 = new JLabel();
-        info6.setText("Autor:");
-        info6.setForeground(Styles.COLOR_FONT);
-        info6.setFont(Styles.FONT);
-        centerPanel.add(info6, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 8;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        JLabel info7 = new JLabel();
-        info7.setText("Descripcion:");
-        info7.setForeground(Styles.COLOR_FONT);
-        info7.setFont(Styles.FONT);
-        centerPanel.add(info7, gbc);
-
-        gbc.gridx = 0;
+        centerPanel.add(new JLabel("Categoría del Producto:"), gbc);
         gbc.gridy = 9;
-        gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
         centerPanel.add(categoriaField, gbc);
-        centerPanel.setBackground(Styles.COLOR_FONT_LIGHT);
-        add(centerPanel, BorderLayout.CENTER);
 
-        // ...
+        // Autor
+        gbc.gridy = 10;
+        centerPanel.add(new JLabel("Autor:"), gbc);
+        gbc.gridy = 11;
+        centerPanel.add(autorField, gbc);
+
+        // Descripción
+        gbc.gridy = 12;
+        centerPanel.add(new JLabel("Descripción:"), gbc);
+        gbc.gridy = 13;
+        centerPanel.add(descripcionField, gbc);
+
         JPanel southPanel = new JPanel();
         southPanel.setLayout(new FlowLayout());
 
-        northPanel.add(btnADD);
-        northPanel.add(btnMOD);
-        northPanel.add(btnDEL);
-        add(northPanel, BorderLayout.NORTH);
+        // JPanel southPanel = new JPanel();
+        southPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        // Agregar los botones al panel sur
+        southPanel.add(btnADD);
+        southPanel.add(btnMOD);
+        southPanel.add(btnDEL);
+        southPanel.add(btnBack);
+        southPanel.add(messageLabel);
+
+        // Agregar el panel sur al layout
+        add(southPanel, BorderLayout.SOUTH);
+
+
+        // northPanel.add(btnADD);
+        // northPanel.add(btnMOD);
+        // northPanel.add(btnDEL);
+        // add(northPanel, BorderLayout.NORTH);
 
         add(centerPanel, BorderLayout.CENTER);
 
@@ -311,7 +265,6 @@ public class AddPiezaPanel extends JPanel {
         southPanel.add(messageLabel);
         add(southPanel, BorderLayout.SOUTH);
 
-        // Solicita el foco en el campo de texto cuando el panel se muestra
         SwingUtilities.invokeLater(() -> barcodeField.requestFocusInWindow());
     }
 
@@ -374,16 +327,16 @@ public class AddPiezaPanel extends JPanel {
             int categoria = Integer.parseInt(categoriaField.getText());
 
             try {
-                boolean exito = piezaDeArteBL
-                        .update(new PiezaDeArteDTO(barcode, nombre, autor, descripcion, precio, categoria, seccion));
+                boolean exito = piezaDeArteBL.update(new PiezaDeArteDTO(barcode, nombre, autor, descripcion, precio, categoria, seccion));
+                // .update(new PiezaDeArteDTO(barcode, nombre, autor, descripcion, precio, categoria, seccion));
                 if (exito) {
                     messageLabel.setText("Producto editado con éxito en la base de datos");
                     tableModel.setValueAt(nombre, selectedRow, 1);
                     tableModel.setValueAt(autor, selectedRow, 2);
-                    tableModel.setValueAt(descripcion, selectedRow, 2);
-                    tableModel.setValueAt(precio, selectedRow, 2);
-                    tableModel.setValueAt(seccion, selectedRow, 3);
-                    tableModel.setValueAt(categoria, selectedRow, 4);
+                    tableModel.setValueAt(descripcion, selectedRow, 3);
+                    tableModel.setValueAt(precio, selectedRow, 4);
+                    tableModel.setValueAt(categoria, selectedRow, 5);
+                    tableModel.setValueAt(seccion, selectedRow, 6);
                 }
             } catch (Exception e) {
                 messageLabel.setText("Ups... No se pudo editar el producto");

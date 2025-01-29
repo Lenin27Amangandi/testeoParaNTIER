@@ -77,7 +77,7 @@ public class PiezaDeArteDAO extends SQLiteDataHelper implements IDAO<PiezaDeArte
     public boolean update(PiezaDeArteDTO entity) throws Exception {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-        String query = "UPDATE Categoria SET Nombre = ?, Descripcion = ? , PrecioReplica = ?, , FechaModifica = ? WHERE BarCode = ?";
+        String query = "UPDATE PiezaDeArte SET Nombre = ?, Descripcion = ? , PrecioReplica = ?, FechaModifica = ? WHERE BarCode = ?";
         try {
             Connection conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
