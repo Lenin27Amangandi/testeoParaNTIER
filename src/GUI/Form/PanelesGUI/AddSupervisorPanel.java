@@ -111,8 +111,8 @@ public class AddSupervisorPanel extends JPanel{
 
         private void addAdmin(String barcode) throws Exception {
         try {
-            AdministradorDTO administradorDTO = new AdministradorDTO(barcode, 2);
-            boolean exito = administradorbl.add(administradorDTO);
+            // AdministradorDTO administradorDTO = new AdministradorDTO(barcode, 2);
+            boolean exito = administradorbl.add(new AdministradorDTO(barcode, 2));
             if (exito) {
                 messageLabel.setText("Supervisor agregado con éxito en la base de datos");
             }
