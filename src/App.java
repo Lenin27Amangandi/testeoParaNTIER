@@ -11,6 +11,8 @@ import DataAcces.DTO.AdministradorTipoDTO;
 import DataAcces.DTO.CategoriaDTO;
 import DataAcces.DTO.PiezaDeArteDTO;
 import DataAcces.DTO.SeccionDTO;
+import GUI.Form.MainForm;
+import GUI.Form.SplashForm;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -109,24 +111,22 @@ public class App {
             // Integer maxRow5 = dao5.getMaxRow();
             // System.out.println("Número máximo de filas: " + maxRow5);
 
-            // Testing BL Categoria
-            CategoriaBL categoriaBL = new CategoriaBL();
-            System.out.println("- ".repeat(25));
-            for (CategoriaDTO categoriDTO : categoriaBL.getAll()) {
-                System.out.println(categoriDTO.toString());
-            }
+            // // Testing BL Categoria
+            // CategoriaBL categoriaBL = new CategoriaBL();
+            // System.out.println("- ".repeat(25));
+            // for (CategoriaDTO categoriDTO : categoriaBL.getAll()) {
+            //     System.out.println(categoriDTO.toString());
+            // }
 
-            // Testing BL Seccion
-            SeccionBL seccionBL = new SeccionBL();
-            System.out.println("- ".repeat(25));
-            for (SeccionDTO seccionDTO : seccionBL.getAll()) {
-                System.out.println(seccionDTO.toString());
-            }
+            // // Testing BL Seccion
+            // SeccionBL seccionBL = new SeccionBL();
+            // System.out.println("- ".repeat(25));
+            // for (SeccionDTO seccionDTO : seccionBL.getAll()) {
+            //     System.out.println(seccionDTO.toString());
+            // }
 
-            
-
-
-
+            // new SplashForm();
+            new MainForm("Acces Scand Art", true);
         } catch (Exception e) {
             throw e;
         }
