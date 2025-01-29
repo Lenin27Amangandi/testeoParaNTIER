@@ -19,6 +19,8 @@ public class EscaneoPanel extends JPanel {
 
     private JLabel nameLabel;
     private JLabel priceLabel;
+    // private JLabel autorLabel;
+    // private JLabel descripcionLabel;
 
     public PrjTextBox barcodeField;
 
@@ -37,22 +39,38 @@ public class EscaneoPanel extends JPanel {
         setBackground(Styles.COLOR_BACKGROUND);
 
         nameLabel = new JLabel("Esperando a que escanee el código del producto...", SwingConstants.CENTER);
-        nameLabel.setForeground(Styles.COLOR_FOREGROUND);
         nameLabel.setFont(Styles.FONT_BOLD);
+        nameLabel.setForeground(Styles.COLOR_FOREGROUND);
+
         priceLabel = new JLabel("...", SwingConstants.CENTER);
         priceLabel.setFont(Styles.FONT_BOLD_24);
         priceLabel.setForeground(Styles.COLOR_FOREGROUND);
+
+        // autorLabel = new JLabel("...", SwingConstants.CENTER);
+        // autorLabel.setFont(Styles.FONT_BOLD_24);
+        // autorLabel.setForeground(Styles.COLOR_FOREGROUND);
+
+        // descripcionLabel = new JLabel("...", SwingConstants.CENTER);
+        // descripcionLabel.setFont(Styles.FONT_BOLD_24);
+        // descripcionLabel.setForeground(Styles.COLOR_FOREGROUND);
+
+
         JPanel northPanel = new JPanel();
 
         northPanel.setLayout(new BorderLayout());
         northPanel.setBackground(Styles.COLOR_BACKGROUND);
         northPanel.setPreferredSize(new Dimension(200, 100));
         northPanel.add(nameLabel, BorderLayout.CENTER);
+
+        // northPanel.add(autorLabel,BorderLayout.WEST);
+
         add(northPanel, BorderLayout.NORTH);
-        add(priceLabel, BorderLayout.CENTER);
+        add(priceLabel, BorderLayout.WEST);
+        // add(descripcionLabel, BorderLayout.CENTER);
 
         barcodeField = new PrjTextBox();
         barcodeField.setPreferredSize(new Dimension(200, 30));
+
         JPanel southPanel = new JPanel(new FlowLayout());
         southPanel.setBackground(Styles.COLOR_FONT_LIGHT);
         southPanel.add(barcodeField);
@@ -61,9 +79,6 @@ public class EscaneoPanel extends JPanel {
         add(southPanel, BorderLayout.SOUTH);
 
         btnHome.addActionListener(e -> showMenuPanel());
-
-        // btnHome.addActionListener(e -> showMenuPanel());
-
         barcodeField.addActionListener(e -> {
             String barcode = barcodeField.getText();
             if (!barcode.trim().isEmpty()) {
@@ -71,8 +86,10 @@ public class EscaneoPanel extends JPanel {
                     processBarcode(barcode);
                 } catch (Exception e1) {
 
-                    nameLabel.setText("");
+                    nameLabel.setText(" ... ");
                     priceLabel.setText("Vuelva a escanear nuevamente!");
+                    // autorLabel.setText("Ningun Autor");
+                    // descripcionLabel.setText(" ... ");
                 }
                 barcodeField.setText("");
             }
@@ -85,8 +102,13 @@ public class EscaneoPanel extends JPanel {
     private void processBarcode(String barcode) throws Exception {
         String nombre = piezabl.getNombreBy(barcode);
         String precio = piezabl.getPrecioBy(barcode);
-        nameLabel.setText("Producto: " + nombre + "\n");
-        priceLabel.setText("Precio: " + precio + "\n");
+        // String autor = piezabl.getAutorBy(barcode);
+        // String descripcion = piezabl.getDescripcionBy(barcode);
+
+        nameLabel.setText("Nombre de la Pieza: " + nombre + "\n");
+        priceLabel.setText("Precio Replica: " + precio + "\n");
+        // autorLabel.setText("Autor: "+autor+"\n");
+        // descripcionLabel.setText("Descripcion: "+ descripcion+ "\n");
     }
 
     private void showMenuPanel() {

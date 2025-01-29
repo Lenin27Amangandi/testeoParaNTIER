@@ -34,6 +34,11 @@ public class PiezaDeArteDTO {
         PrecioReplica = precioReplica;
     }
 
+    public PiezaDeArteDTO(String descripcion, String autor) {
+        Descripcion = descripcion;
+        Autor = autor;
+    }
+
     public PiezaDeArteDTO(String BarCode, String Nombre, String Autor, String Descripcion, Double PrecioReplica,
             Integer idSeccion, Integer idCategoria) {
         this.BarCode = BarCode;
@@ -45,15 +50,16 @@ public class PiezaDeArteDTO {
         this.idSeccion = idSeccion;
     }
 
-    // public PiezaDeArteDTO(String BarCode, String Nombre, String Autor, String Descripcion, Double PrecioReplica,
-    //         Integer idCategoria, Integer idSeccion) {
-    //     this.BarCode = BarCode;
-    //     this.Nombre = Nombre;
-    //     this.Autor = Autor;
-    //     this.Descripcion = Descripcion;
-    //     this.PrecioReplica = PrecioReplica;
-    //     this.idCategoria = idCategoria;
-    //     this.idSeccion = idSeccion;
+    // public PiezaDeArteDTO(String BarCode, String Nombre, String Autor, String
+    // Descripcion, Double PrecioReplica,
+    // Integer idCategoria, Integer idSeccion) {
+    // this.BarCode = BarCode;
+    // this.Nombre = Nombre;
+    // this.Autor = Autor;
+    // this.Descripcion = Descripcion;
+    // this.PrecioReplica = PrecioReplica;
+    // this.idCategoria = idCategoria;
+    // this.idSeccion = idSeccion;
     // }
 
     public PiezaDeArteDTO(Integer idPieza, String BarCode, String Nombre, String Autor, String Descripcion,

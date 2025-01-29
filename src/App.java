@@ -74,10 +74,11 @@ public class App {
             // Integer maxRow3 = dao3.getMaxRow();
             // System.out.println("Número máximo de filas: " + maxRow3);
 
-            // // Testeo de Dao PiezaDeArte
+            // Testeo de Dao PiezaDeArte
             // System.out.println();
             // System.out.println("- ".repeat(25));
             // PiezaDeArteDAO dao4 = new PiezaDeArteDAO();
+            // System.out.println(dao4.readAutorBy("0234567890125"));
             // //Testeo de create PiezaDeArte desde el dao
             // // ,('0234567890127' , 'El Grito' , 'Edvard Munch' , 'Pintura al oleo',
             // 10.90, 1, 3)
@@ -143,6 +144,8 @@ public class App {
 
             // new SplashForm();
             new MainForm("Acces Scand Art", true);
+
+
 
 
             //

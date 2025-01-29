@@ -53,6 +53,58 @@ public class PiezaDeArteDAO extends SQLiteDataHelper implements IDAO<PiezaDeArte
         return nombre;
     }
 
+    // public String readAutorBy(String barcode)throws Exception {
+    //     PiezaDeArteDTO piezaDeArteDTO=new PiezaDeArteDTO();
+    //     String query = "SELECT Autor FROM PiezaDeArte WHERE Estado = 'A' AND BarCode = "+ "'" +barcode+"'";
+    //     String nombreAutor;
+    //     try {
+    //         Connection conn = openConnection();
+    //         Statement stmt = conn.createStatement();
+    //         ResultSet rs = stmt.executeQuery(query);
+    //         while (rs.next()) {
+    //             piezaDeArteDTO = new PiezaDeArteDTO(rs.getString(1));
+    //         }
+    //         nombreAutor = piezaDeArteDTO.getAutor();
+    //     } catch (Exception e) {
+    //         throw e;
+    //     }
+    //     return nombreAutor;
+    // }
+
+    // public String readAutorBy(String barcode) throws Exception {
+    //     String query = "SELECT Autor FROM PiezaDeArte WHERE Estado = 'A' AND BarCode = ?";
+    //     String nombreAutor = null;
+    //     try (Connection conn = openConnection();
+    //         PreparedStatement pstmt = conn.prepareStatement(query)) {
+    //         pstmt.setString(1, barcode);
+    //         try (ResultSet rs = pstmt.executeQuery()) {
+    //             if (rs.next()) {
+    //                 nombreAutor = rs.getString("Autor");
+    //             }
+    //         }
+    //     } catch (Exception e) {
+    //         throw e;
+    //     }
+    //     return nombreAutor;
+    // }
+
+    // public String readDescripcionBy(String barcode) throws Exception {
+    //     String query = "SELECT Descripcion FROM PiezaDeArte WHERE Estado = 'A' AND BarCode = ?";
+    //     String descripcion = null;
+    //     try (Connection conn = openConnection();
+    //         PreparedStatement pstmt = conn.prepareStatement(query)) {
+    //         pstmt.setString(1, barcode);
+    //         try (ResultSet rs = pstmt.executeQuery()) {
+    //             if (rs.next()) {
+    //                 descripcion = rs.getString("Descripcion");
+    //             }
+    //         }
+    //     } catch (Exception e) {
+    //         throw e;
+    //     }
+    //     return descripcion;
+    // }
+
     @Override
     public boolean create(PiezaDeArteDTO entity) throws Exception {
         String query = "INSERT INTO PiezaDeArte (BarCode, Nombre, Autor, Descripcion, PrecioReplica, idCategoria, idSeccion) VALUES(?,?,?,?,?,?,?)";
