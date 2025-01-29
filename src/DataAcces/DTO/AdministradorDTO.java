@@ -22,6 +22,10 @@ public class AdministradorDTO {
     public AdministradorDTO() {
     }
 
+    public AdministradorDTO(Integer Tipo) {
+        this.Tipo = Tipo;
+    }
+
     public AdministradorDTO(String Codigo, Integer Tipo) {
         this.Codigo = Codigo;
         this.Tipo = Tipo;

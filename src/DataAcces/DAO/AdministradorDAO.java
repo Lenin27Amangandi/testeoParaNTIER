@@ -15,6 +15,25 @@ import DataAcces.DTO.AdministradorDTO;
 
 public class AdministradorDAO extends SQLiteDataHelper implements IDAO<AdministradorDTO> {
 
+    
+    // Debemos testear esta parte del codigo
+    public Integer readTipo(String barcode) throws Exception {
+        AdministradorDTO administradorDTO = null;
+        String query = "SELECT Tipo FROM Administrador WHERE Estado = 'A' AND Codigo = " + barcode;
+        try {
+            Connection conn = openConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                administradorDTO = new AdministradorDTO();
+                administradorDTO.setTipo(rs.getInt(1));
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+        return administradorDTO != null ? administradorDTO.getTipo() : null;
+    }
+
     @Override
     public boolean create(AdministradorDTO entity) throws Exception {
         String query = " INSERT INTO Administrador (Codigo, Tipo) VALUES (?, ?)";

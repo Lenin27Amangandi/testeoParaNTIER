@@ -26,6 +26,14 @@ public class PiezaDeArteDTO {
     public PiezaDeArteDTO() {
     }
 
+    public PiezaDeArteDTO(String nombre) {
+        Nombre = nombre;
+    }
+
+    public PiezaDeArteDTO(Double precioReplica) {
+        PrecioReplica = precioReplica;
+    }
+
     public PiezaDeArteDTO(String BarCode, String Nombre,String Autor, String Descripcion, Double PrecioReplica
                         , Integer idCategoria, Integer idSeccion) {
         this.BarCode = BarCode;

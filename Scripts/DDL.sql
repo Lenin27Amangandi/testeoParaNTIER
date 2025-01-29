@@ -124,6 +124,7 @@ CREATE TABLE PiezaDeArte(
     ,FOREIGN KEY (idSeccion) REFERENCES Seccion(idSeccion)
 );
 
+    SELECT Nombre FROM PiezaDeArte WHERE Estado = 'A' AND BarCode = "0234567890124";
 
     SELECT idPieza
                 ,BarCode          

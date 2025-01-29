@@ -15,6 +15,44 @@ import DataAcces.DTO.PiezaDeArteDTO;
 
 public class PiezaDeArteDAO extends SQLiteDataHelper implements IDAO<PiezaDeArteDTO> {
 
+    public Double readPrecioBy(String barcode) throws Exception {
+        PiezaDeArteDTO piezaDTO = new PiezaDeArteDTO();
+        String query = "SELECT Precio FROM Producto WHERE Estado = 'A' AND BarCode = " + barcode;
+        Double precio;
+        try {
+            Connection conn = openConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                piezaDTO = new PiezaDeArteDTO(rs.getDouble(1));
+            }
+            precio = piezaDTO.getPrecioReplica();
+        } catch (SQLException e) {
+        throw e;
+        // throw new prjException(e.getMessage(), getClass().getName(), "readPrecioBy()");
+        }
+        return precio;
+        // retorna el precio del producto en double
+    }
+
+    public String readNombreBy(String barcode) throws Exception {
+        PiezaDeArteDTO piezaDeArteDTO = new PiezaDeArteDTO();
+        String query = "SELECT Nombre FROM PiezaDeArte WHERE Estado = 'A' AND BarCode = " + barcode;
+        String nombre;
+        try {
+            Connection conn = openConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                piezaDeArteDTO = new PiezaDeArteDTO(rs.getString(1));
+            }
+            nombre = piezaDeArteDTO.getNombre();
+        } catch (Exception e) {
+            throw e;
+        }
+        return nombre;
+    }
+
     @Override
     public boolean create(PiezaDeArteDTO entity) throws Exception {
         String query = "INSERT INTO PiezaDeArte (BarCode, Nombre, Autor, Descripcion, PrecioReplica, idCategoria, idSeccion) VALUES(?,?,?,?,?,?,?)";
@@ -113,8 +151,6 @@ public class PiezaDeArteDAO extends SQLiteDataHelper implements IDAO<PiezaDeArte
         }
     }
 
-
-
     @Override
     public Integer getMaxRow() throws Exception {
         String query = " SELECT COUNT(*)"
@@ -132,8 +168,6 @@ public class PiezaDeArteDAO extends SQLiteDataHelper implements IDAO<PiezaDeArte
         }
         return 0;
     }
-
-
 
     @Override
     public PiezaDeArteDTO readBy(String barcode) throws Exception {

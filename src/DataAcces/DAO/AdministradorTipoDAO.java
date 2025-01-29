@@ -86,8 +86,40 @@ public class AdministradorTipoDAO extends SQLiteDataHelper implements IDAOint<Ad
 
     @Override
     public AdministradorTipoDTO readBy(Integer id) throws Exception {
-        return null;
-    }
+        // idAdministradorTipo  INTEGER PRIMARY KEY AUTOINCREMENT
+        // ,Nombre              TEXT NOT NULL
+    
+        // ,Estado              VARCHAR(1) NOT NULL DEFAULT('A')
+        // ,FechaCrea           DATETIME DEFAULT(datetime('now','localtime'))
+        // ,FechaModifica       DATETIME
+
+        AdministradorTipoDTO adminTipoDTO = new AdministradorTipoDTO();
+        String query = "SELECT idAdministradorTipo "
+                + " ,Nombre          "
+                + " ,Estado          "
+                + " ,FechaCrea       "
+                + " ,FechaModifica   "
+                + " From AdministradorTipo   "
+                + " WHERE Estado='A' "
+                + " AND   idAdministradorTipo = " + id.toString();
+
+        try {
+            Connection conn = openConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+                adminTipoDTO = new AdministradorTipoDTO(rs.getInt(1)
+                                    , rs.getString(2)
+                                    , rs.getString(3)
+                                    , rs.getString(4)
+                                    , rs.getString(5));
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+        return adminTipoDTO;
+        }
 
     @Override
     public boolean update(AdministradorTipoDTO entity) throws Exception {

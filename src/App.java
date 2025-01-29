@@ -44,6 +44,9 @@ public class App {
             // for (AdministradorTipoDTO adminTip : dao2.readAll()) {
             //     System.out.println(adminTip.toString());
             // }
+            // // //Testeo de create AdministradorTipo desde el dao exitoso
+            // System.out.println(dao2.readBy(1));
+            // System.out.println(dao2.readBy(2));
             // //Testeo para el getMaxRow AdministradorTipo
             // System.out.println("- ".repeat(25));
             // Integer maxRow2 = dao2.getMaxRow();
@@ -106,20 +109,21 @@ public class App {
             // Integer maxRow5 = dao5.getMaxRow();
             // System.out.println("Número máximo de filas: " + maxRow5);
 
-            //Testing BL Categoria
-            // CategoriaBL categoriaBL = new CategoriaBL();
-            // System.out.println("- ".repeat(25));
-            // for (CategoriaDTO categoriDTO : categoriaBL.getAll()) {
-            //     System.out.println(categoriDTO.toString());
-            // }
+            // Testing BL Categoria
+            CategoriaBL categoriaBL = new CategoriaBL();
+            System.out.println("- ".repeat(25));
+            for (CategoriaDTO categoriDTO : categoriaBL.getAll()) {
+                System.out.println(categoriDTO.toString());
+            }
 
-            //Testing BL Seccion
-            // SeccionBL seccionBL = new SeccionBL();
-            // System.out.println("- ".repeat(25));
-            // for (SeccionDTO seccionDTO : seccionBL.getAll()) {
-            //     System.out.println(seccionDTO.toString());
-            // }
+            // Testing BL Seccion
+            SeccionBL seccionBL = new SeccionBL();
+            System.out.println("- ".repeat(25));
+            for (SeccionDTO seccionDTO : seccionBL.getAll()) {
+                System.out.println(seccionDTO.toString());
+            }
 
+            
 
 
 
