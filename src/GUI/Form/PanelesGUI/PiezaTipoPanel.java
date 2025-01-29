@@ -57,12 +57,12 @@ public class PiezaTipoPanel extends JPanel {
     }
 
     private void showAddProductPanel() {
-        // JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        // if (frame != null) {
-        // frame.setContentPane(new AddProductPanel(this));
-        // frame.revalidate();
-        // frame.repaint();
-        // }
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        if (frame != null) {
+        frame.setContentPane(new AddPiezaPanel(this));
+        frame.revalidate();
+        frame.repaint();
+        }
         System.out.println("Vamos al otro registro");
     }
 
