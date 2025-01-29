@@ -1,4 +1,8 @@
+import java.nio.channels.Pipe.SourceChannel;
+
+import BusinessLogic.AdministradorBL;
 import BusinessLogic.CategoriaBL;
+import BusinessLogic.PiezaDeArteBL;
 import BusinessLogic.SeccionBL;
 import DataAcces.SQLiteDataHelper;
 import DataAcces.DAO.AdministradorDAO;
@@ -17,7 +21,8 @@ import GUI.Form.SplashForm;
 public class App {
     public static void main(String[] args) throws Exception {
         try {
-            // // Testeo de conexión a la base de datos SQLite para verificar que la conexión es exitosa
+            // // Testeo de conexión a la base de datos SQLite para verificar que la
+            // conexión es exitosa
             // SQLiteDataHelper.testConnection();
 
             // // Testeo de Dao Categoria
@@ -25,26 +30,24 @@ public class App {
             // System.out.println("- ".repeat(25));
             // CategoriaDAO dao = new CategoriaDAO();
 
-            //Testeo de create Categoria desde el dao
+            // Testeo de create Categoria desde el dao
             // // dao.create(new CategoriaDTO("Cine")); // Funciona
 
             // CategoriaDTO categoria = dao.readBy(4);
 
-
             // for (CategoriaDTO cate : dao.readAll()) {
-            //     System.out.println(cate.toString());
+            // System.out.println(cate.toString());
             // }
             // // Testeo para el getMaxRow Categoria
             // System.out.println("- ".repeat(25));
             // Integer maxRow1 = dao.getMaxRow();
             // System.out.println("Número máximo de filas: " + maxRow1);
 
-            
             // // Testeo de Dao AdministradorTipo
             // System.out.println("- ".repeat(25));
             // AdministradorTipoDAO dao2 = new AdministradorTipoDAO();
             // for (AdministradorTipoDTO adminTip : dao2.readAll()) {
-            //     System.out.println(adminTip.toString());
+            // System.out.println(adminTip.toString());
             // }
             // // //Testeo de create AdministradorTipo desde el dao exitoso
             // System.out.println(dao2.readBy(1));
@@ -61,7 +64,7 @@ public class App {
             // //Testeo de create Seccion desde el dao exitoso
             // //dao3.create(new SeccionDTO("Moderno"));
             // for (SeccionDTO seccion : dao3.readAll()) {
-            //     System.out.println(seccion.toString());
+            // System.out.println(seccion.toString());
             // }
             // // testeo para el readBy de Seccion Exitoso
             // System.out.println(dao3.readBy(3));
@@ -76,11 +79,13 @@ public class App {
             // System.out.println("- ".repeat(25));
             // PiezaDeArteDAO dao4 = new PiezaDeArteDAO();
             // //Testeo de create PiezaDeArte desde el dao
-            // // ,('0234567890127'   , 'El Grito'    , 'Edvard Munch'     , 'Pintura al oleo', 10.90, 1, 3)
-            // // dao4.create(new PiezaDeArteDTO("0234567890127", "ElGrito", "Edvard Munch", "Pintura que replresenta el estado mental", 10.90, 1, 3));// Funciona
+            // // ,('0234567890127' , 'El Grito' , 'Edvard Munch' , 'Pintura al oleo',
+            // 10.90, 1, 3)
+            // // dao4.create(new PiezaDeArteDTO("0234567890127", "ElGrito", "Edvard Munch",
+            // "Pintura que replresenta el estado mental", 10.90, 1, 3));// Funciona
             // //Testeo de readAll PiezaDeArte
             // for (PiezaDeArteDTO pieza : dao4.readAll()) {
-            //     System.out.println(pieza.toString());
+            // System.out.println(pieza.toString());
             // }
             // Testeo para el read By de Pieza Exitoso
             // // System.out.println(dao4.readBy("0234567890126")); Funciona el read by
@@ -89,22 +94,19 @@ public class App {
             // Integer maxRow4 = dao4.getMaxRow();
             // System.out.println("Número máximo de filas: " + maxRow4);
 
-
-            // // Testeo de Dao Administrador 
+            // // Testeo de Dao Administrador
             // System.out.println();
             // System.out.println("- ".repeat(25));
             // AdministradorDAO dao5 = new AdministradorDAO();
-            //Testeo de create Administrador desde el dao
+            // Testeo de create Administrador desde el dao
             // // dao5.create(new AdministradorDTO("1753193828123", 1)); Funciona
             // for (AdministradorDTO admin : dao5.readAll()) {
-            //     System.out.println(admin.toString());
+            // System.out.println(admin.toString());
             // }
-            
+
             // Testeo para el read by Exitoso
             // System.out.println("- ".repeat(25));
             // System.out.println(dao5.readBy("1753193828123"));
-
-
 
             // // Testeo para el getMaxRow AdministradorTipo
             // System.out.println("- ".repeat(25));
@@ -115,18 +117,34 @@ public class App {
             // CategoriaBL categoriaBL = new CategoriaBL();
             // System.out.println("- ".repeat(25));
             // for (CategoriaDTO categoriDTO : categoriaBL.getAll()) {
-            //     System.out.println(categoriDTO.toString());
+            // System.out.println(categoriDTO.toString());
             // }
 
             // // Testing BL Seccion
             // SeccionBL seccionBL = new SeccionBL();
             // System.out.println("- ".repeat(25));
             // for (SeccionDTO seccionDTO : seccionBL.getAll()) {
-            //     System.out.println(seccionDTO.toString());
+            // System.out.println(seccionDTO.toString());
             // }
+
+            // Testing Pieza de arteBL
+            // PiezaDeArteBL piezaBL= new PiezaDeArteBL();
+            // piezaBL.getNombreBy("0234567890124");
+            // System.out.println(piezaBL.getNombreBy("0234567890124"));
+            // System.out.println(piezaBL.getPrecioBy("0234567890124"));
+
+            // Testing BL Admin
+            // AdministradorBL adminBL = new AdministradorBL();
+            // System.out.println("- ".repeat(25));
+            // // adminBL.add(new AdministradorDTO("1234657891235", 2));
+            // System.out.println(adminBL.getAll());
+
+
 
             // new SplashForm();
             new MainForm("Acces Scand Art", true);
+
+            //
         } catch (Exception e) {
             throw e;
         }

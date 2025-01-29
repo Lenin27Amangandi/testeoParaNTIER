@@ -17,7 +17,7 @@ public class PiezaDeArteDAO extends SQLiteDataHelper implements IDAO<PiezaDeArte
 
     public Double readPrecioBy(String barcode) throws Exception {
         PiezaDeArteDTO piezaDTO = new PiezaDeArteDTO();
-        String query = "SELECT Precio FROM Producto WHERE Estado = 'A' AND BarCode = " + barcode;
+        String query = "SELECT PrecioReplica FROM PiezaDeArte WHERE Estado = 'A' AND BarCode = "+ "'" + barcode+"'";
         Double precio;
         try {
             Connection conn = openConnection();
@@ -37,7 +37,7 @@ public class PiezaDeArteDAO extends SQLiteDataHelper implements IDAO<PiezaDeArte
 
     public String readNombreBy(String barcode) throws Exception {
         PiezaDeArteDTO piezaDeArteDTO = new PiezaDeArteDTO();
-        String query = "SELECT Nombre FROM PiezaDeArte WHERE Estado = 'A' AND BarCode = " + barcode;
+        String query = "SELECT Nombre FROM PiezaDeArte WHERE Estado = 'A' AND BarCode = "+ "'" + barcode+"'";
         String nombre;
         try {
             Connection conn = openConnection();

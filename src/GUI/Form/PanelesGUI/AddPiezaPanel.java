@@ -112,7 +112,6 @@ public class AddPiezaPanel extends JPanel {
             } catch (Exception ex) {
                 messageLabel.setText("Ups... No se pudo eliminar el producto");
                 ex.printStackTrace();
-
             }
         });
 
@@ -142,6 +141,9 @@ public class AddPiezaPanel extends JPanel {
         tableModel.addColumn("Precio De su Replica");
         tableModel.addColumn("Sección del producto");
         tableModel.addColumn("Categoría del producto");
+
+
+        
         productTable = new JTable(tableModel);
         productTable.setPreferredScrollableViewportSize(new Dimension(500, 300));
         productTable.setSelectionForeground(Styles.COLOR_FOREGROUND);
@@ -170,130 +172,148 @@ public class AddPiezaPanel extends JPanel {
                 }
             }
         });
-    productTable.setFillsViewportHeight(true);
+        productTable.setFillsViewportHeight(true);
 
-    // Agregar la tabla a un JScrollPane
-    JScrollPane tableScrollPane = new JScrollPane(productTable);
+        // Agregar la tabla a un JScrollPane
+        JScrollPane tableScrollPane = new JScrollPane(productTable);
 
-    // Agregar el JScrollPane al panel
-    add(tableScrollPane, BorderLayout.EAST);
+        // Agregar el JScrollPane al panel
+        add(tableScrollPane, BorderLayout.EAST);
 
         // Cargar los datos de la base de datos en la tabla
         loadProductsFromDatabase();
 
-         // Cargar los datos de la base de datos en la tabla
-         loadProductsFromDatabase();
+        // Cargar los datos de la base de datos en la tabla
+        loadProductsFromDatabase();
 
-         JPanel northPanel = new JPanel();
-         northPanel = paintPanel(northPanel);
- 
-         northPanel.setLayout(new FlowLayout());
-         // ...
+        JPanel northPanel = new JPanel();
+        northPanel = paintPanel(northPanel);
 
-         JPanel centerPanel = new JPanel();
-         centerPanel.setLayout(new GridBagLayout());
-         centerPanel = paintPanel(centerPanel);
-         GridBagConstraints gbc = new GridBagConstraints();
- 
-         gbc.insets = new Insets(5, 5, 5, 5); // add some padding around each component
- 
-         gbc.gridx = 0;
-         gbc.gridy = 0;
-         gbc.anchor = GridBagConstraints.LINE_START;
+        northPanel.setLayout(new FlowLayout());
+        // ...
 
-         JLabel info1 = new JLabel();
-         info1.setText("Codigo de Barras:");
-         info1.setForeground(Styles.COLOR_FONT);
-         info1.setFont(Styles.FONT);
-         centerPanel.add(info1, gbc);
- 
-         gbc.gridx = 0;
-         gbc.gridy = 1;
-         gbc.anchor = GridBagConstraints.LINE_START;
-         gbc.fill = GridBagConstraints.HORIZONTAL;
-         centerPanel.add(barcodeField, gbc);
- 
-         gbc.gridx = 0;
-         gbc.gridy = 2;
-         gbc.anchor = GridBagConstraints.LINE_END;
-         JLabel info2 = new JLabel();
-         info2.setText("Nombre del Producto:");
-         info2.setForeground(Styles.COLOR_FONT);
-         info2.setFont(Styles.FONT);
-         centerPanel.add(info2, gbc);
- 
-         gbc.gridx = 0;
-         gbc.gridy = 3;
-         gbc.anchor = GridBagConstraints.LINE_START;
-         gbc.fill = GridBagConstraints.HORIZONTAL;
-         centerPanel.add(nombreField, gbc);
- 
-         gbc.gridx = 0;
-         gbc.gridy = 4;
-         gbc.anchor = GridBagConstraints.LINE_END;
-         JLabel info3 = new JLabel();
-         info3.setText("Precio del Producto:");
-         info3.setForeground(Styles.COLOR_FONT);
-         info3.setFont(Styles.FONT);
- 
-         centerPanel.add(info3, gbc);
- 
-         gbc.gridx = 0;
-         gbc.gridy = 5;
-         gbc.anchor = GridBagConstraints.LINE_START;
-         gbc.fill = GridBagConstraints.HORIZONTAL;
-         centerPanel.add(precioField, gbc);
- 
-         gbc.gridx = 0;
-         gbc.gridy = 6;
-         gbc.anchor = GridBagConstraints.LINE_END;
-         JLabel info4 = new JLabel();
-         info4.setText("Seccion");
-         info4.setForeground(Styles.COLOR_FONT);
-         info4.setFont(Styles.FONT);
-         centerPanel.add(info4, gbc);
- 
-         gbc.gridx = 0;
-         gbc.gridy = 7;
-         gbc.anchor = GridBagConstraints.LINE_START;
-         gbc.fill = GridBagConstraints.HORIZONTAL;
-         centerPanel.add(seccionField, gbc);
- 
-         gbc.gridx = 0;
-         gbc.gridy = 8;
-         gbc.anchor = GridBagConstraints.LINE_END;
-         JLabel info5 = new JLabel();
-         info5.setText("Categoria del producto:");
-         info5.setForeground(Styles.COLOR_FONT);
-         info5.setFont(Styles.FONT);
-         centerPanel.add(info5, gbc);
- 
-         gbc.gridx = 0;
-         gbc.gridy = 9;
-         gbc.anchor = GridBagConstraints.LINE_START;
-         gbc.fill = GridBagConstraints.HORIZONTAL;
-         centerPanel.add(categoriaField, gbc);
-         centerPanel.setBackground(Styles.COLOR_FONT_LIGHT);
-         add(centerPanel, BorderLayout.CENTER);
- 
-         // ...
-         JPanel southPanel = new JPanel();
-         southPanel.setLayout(new FlowLayout());
- 
-         northPanel.add(btnADD);
-         northPanel.add(btnMOD);
-         northPanel.add(btnDEL);
-         add(northPanel, BorderLayout.NORTH);
- 
-         add(centerPanel, BorderLayout.CENTER);
- 
-         southPanel.add(btnBack);
-         southPanel.add(messageLabel);
-         add(southPanel, BorderLayout.SOUTH);
- 
-         // Solicita el foco en el campo de texto cuando el panel se muestra
-         SwingUtilities.invokeLater(() -> barcodeField.requestFocusInWindow());
-     }
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new GridBagLayout());
+        centerPanel = paintPanel(centerPanel);
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.insets = new Insets(5, 5, 5, 5); // add some padding around each component
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.LINE_START;
+
+        JLabel info1 = new JLabel();
+        info1.setText("Codigo de Barras:");
+        info1.setForeground(Styles.COLOR_FONT);
+        info1.setFont(Styles.FONT);
+        centerPanel.add(info1, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        centerPanel.add(barcodeField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        JLabel info2 = new JLabel();
+        info2.setText("Nombre del Producto:");
+        info2.setForeground(Styles.COLOR_FONT);
+        info2.setFont(Styles.FONT);
+        centerPanel.add(info2, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        centerPanel.add(nombreField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        JLabel info3 = new JLabel();
+        info3.setText("Precio del Producto:");
+        info3.setForeground(Styles.COLOR_FONT);
+        info3.setFont(Styles.FONT);
+
+        centerPanel.add(info3, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        centerPanel.add(precioField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        JLabel info4 = new JLabel();
+        info4.setText("Seccion");
+        info4.setForeground(Styles.COLOR_FONT);
+        info4.setFont(Styles.FONT);
+        centerPanel.add(info4, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        centerPanel.add(seccionField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        JLabel info5 = new JLabel();
+        info5.setText("Categoria del producto:");
+        info5.setForeground(Styles.COLOR_FONT);
+        info5.setFont(Styles.FONT);
+        centerPanel.add(info5, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        JLabel info6 = new JLabel();
+        info6.setText("Autor:");
+        info6.setForeground(Styles.COLOR_FONT);
+        info6.setFont(Styles.FONT);
+        centerPanel.add(info6, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        JLabel info7 = new JLabel();
+        info7.setText("Descripcion:");
+        info7.setForeground(Styles.COLOR_FONT);
+        info7.setFont(Styles.FONT);
+        centerPanel.add(info7, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        centerPanel.add(categoriaField, gbc);
+        centerPanel.setBackground(Styles.COLOR_FONT_LIGHT);
+        add(centerPanel, BorderLayout.CENTER);
+
+        // ...
+        JPanel southPanel = new JPanel();
+        southPanel.setLayout(new FlowLayout());
+
+        northPanel.add(btnADD);
+        northPanel.add(btnMOD);
+        northPanel.add(btnDEL);
+        add(northPanel, BorderLayout.NORTH);
+
+        add(centerPanel, BorderLayout.CENTER);
+
+        southPanel.add(btnBack);
+        southPanel.add(messageLabel);
+        add(southPanel, BorderLayout.SOUTH);
+
+        // Solicita el foco en el campo de texto cuando el panel se muestra
+        SwingUtilities.invokeLater(() -> barcodeField.requestFocusInWindow());
+    }
 
     private void deleteProduct() {
         int selectedRow = productTable.getSelectedRow();

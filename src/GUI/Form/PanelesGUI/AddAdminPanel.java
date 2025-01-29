@@ -40,11 +40,14 @@ public class AddAdminPanel extends JPanel {
         setLayout(new BorderLayout());
 
         btnBack.addActionListener(e -> showAdminTipoPanel());
+
         btnADD.addActionListener(e -> {
             btnADD.setForeground(Styles.COLOR_FOREGROUND);
             btnDEL.setForeground(Styles.COLOR_FOREGROUND_PRESSED);
             this.mode = true;
         });
+
+
         btnDEL.addActionListener(e -> {
             btnDEL.setForeground(Styles.COLOR_FOREGROUND);
             btnADD.setForeground(Styles.COLOR_FOREGROUND_PRESSED);
@@ -87,8 +90,6 @@ public class AddAdminPanel extends JPanel {
 
         // Solicita el foco en el campo de texto cuando el panel se muestra
         SwingUtilities.invokeLater(() -> barcodeField.requestFocusInWindow());
-    
-
     }
 
     private void processBarcode(String barcode) throws Exception {
@@ -118,7 +119,6 @@ public class AddAdminPanel extends JPanel {
                 messageLabel.setText("Ups... No se pudo eliminar el administrador");
                 e.printStackTrace();
             }
-
         }
     }
 

@@ -68,12 +68,13 @@ public class EscaneoLogin extends JPanel {
 
     private void processBarcode(String barcode) throws Exception {
         boolean adminTipo = administradorbl.tipoAdmin(barcode);
-        if (adminTipo == true) {
+        // if (adminTipo == true) {
+        if (adminTipo == false) {
             showLoginPanel();
-            System.out.println("Vamos a login panel de supervisor Pinturas");
+            System.out.println("Vamos a login panel de Admin");
         } else {
             showSupervisorTipoPanel(adminTipo);
-            System.out.println("Vamos a login Panel tipo admin");
+            System.out.println("Vamos a login Panel tipo Superviso");
         }
     }
 
@@ -89,7 +90,6 @@ public class EscaneoLogin extends JPanel {
     private void showLoginPanel() {
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
         if (frame != null) {
-            frame.setContentPane(new EscaneoLogin(menuPanel));
             frame.setContentPane(new LogInPanel(menuPanel));
             frame.revalidate();
             frame.repaint();

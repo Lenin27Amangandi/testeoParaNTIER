@@ -93,8 +93,6 @@ public class AddSupervisorPanel extends JPanel{
 
         // Solicita el foco en el campo de texto cuando el panel se muestra
         SwingUtilities.invokeLater(() -> barcodeField.requestFocusInWindow());
-
-
         }
 
 

@@ -33,6 +33,7 @@ public class MenuPanel extends JPanel {
      */
     public MenuPanel() {
         customizeComponent();
+        btnVisitante.addActionListener(e -> showEscaneoPanel());
         btnAdministrador.addActionListener(e -> showEscaneoLogin());
     }
 
@@ -46,6 +47,15 @@ public class MenuPanel extends JPanel {
         btnVisitante.setForeground(Styles.COLOR_FONT);
         add(btnVisitante);
         add(btnAdministrador);
+    }
+
+    private void showEscaneoPanel() {
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        if (frame != null) {
+            frame.setContentPane(new EscaneoPanel(this)); // Pasar 'this' para el botón 'Regresar al menu'
+            frame.revalidate();
+            frame.repaint();
+        }
     }
 
 
