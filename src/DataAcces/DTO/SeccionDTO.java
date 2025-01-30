@@ -8,8 +8,7 @@ public class SeccionDTO {
     private String FechaCrea;
     private String FechaModifica;
 
-    public SeccionDTO() {
-    }
+    public SeccionDTO() {}
 
     public SeccionDTO(String Nombre) {
         this.Nombre = Nombre;

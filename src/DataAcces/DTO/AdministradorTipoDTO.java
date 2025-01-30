@@ -23,12 +23,21 @@ public class AdministradorTipoDTO {
 
     public AdministradorTipoDTO(int idAdministradorTipo, String Nombre, String Estado
                                 , String FechaCrea, String FechaModifica) {
-
         this.idAdministradorTipo = idAdministradorTipo;
         this.Nombre = Nombre;
         this.Estado = Estado;
         this.FechaCrea = FechaCrea;
         this.FechaModifica = FechaModifica;
+    }
+
+    @Override
+    public String toString(){
+        return  getClass().getName()
+                + "\n idAdministradorTipo     "+ getIdAdministradorTipo()
+                + "\n nombre                  "+ getNombre()
+                + "\n estado                  "+ getEstado()
+                + "\n fechaCrea               "+ getFechaCrea()
+                + "\n fechaModifica           "+ getFechaModifica();
     }
 
     public int getIdAdministradorTipo() {
@@ -57,16 +66,6 @@ public class AdministradorTipoDTO {
     }
     public void setFechaModifica(String fechaModifica) {
         FechaModifica = fechaModifica;
-    }
-
-    @Override
-    public String toString(){
-        return  getClass().getName()
-                + "\n idAdministradorTipo     "+ getIdAdministradorTipo()
-                + "\n nombre                  "+ getNombre()
-                + "\n estado                  "+ getEstado()
-                + "\n fechaCrea               "+ getFechaCrea()
-                + "\n fechaModifica           "+ getFechaModifica();
     }
 
 }

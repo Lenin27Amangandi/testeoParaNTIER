@@ -15,7 +15,6 @@ import DataAcces.DTO.AdministradorDTO;
 
 public class AdministradorDAO extends SQLiteDataHelper implements IDAO<AdministradorDTO> {
 
-    // Debemos testear esta parte del codigo
     public Integer readTipo(String barcode) throws Exception {
         AdministradorDTO administradorDTO = null;
         String query = "SELECT Tipo FROM Administrador WHERE Estado = 'A' AND Codigo = " + barcode;
@@ -47,7 +46,6 @@ public class AdministradorDAO extends SQLiteDataHelper implements IDAO<Administr
             throw e;
         }
     }
-
     @Override
     public List<AdministradorDTO> readAll() throws Exception {
         // private Integer idAdministrador;
@@ -59,28 +57,31 @@ public class AdministradorDAO extends SQLiteDataHelper implements IDAO<Administr
 
         List<AdministradorDTO> list = new ArrayList<>();
         String query = "SELECT idAdministrador "
-                + " ,Codigo          "
-                + " ,Tipo            "
-                + " ,Estado          "
-                + " ,FechaCrea       "
-                + " ,FechaModifica   "
-                + " From Administrador "
-                + " WHERE Estado='A' ";
+                        + " ,Codigo          "
+                        + " ,Tipo            "
+                        + " ,Estado          "
+                        + " ,FechaCrea       "
+                        + " ,FechaModifica   "
+                        + " From Administrador "
+                        + " WHERE Estado='A' ";
         try {
             Connection conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                AdministradorDTO adminDTO = new AdministradorDTO(rs.getInt(1), rs.getString(2), rs.getInt(3),
-                        rs.getString(4), rs.getString(5), rs.getString(6));
-                list.add(adminDTO);
+                AdministradorDTO adminDTO = new AdministradorDTO(rs.getInt(1)
+                                            , rs.getString(2)
+                                            , rs.getInt(3)
+                                            ,rs.getString(4)
+                                            , rs.getString(5)
+                                            , rs.getString(6));
+            list.add(adminDTO);
             }
         } catch (SQLException e) {
             throw e;
         }
         return list;
     }
-
     @Override
     public boolean update(AdministradorDTO entity) throws Exception {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -98,7 +99,6 @@ public class AdministradorDAO extends SQLiteDataHelper implements IDAO<Administr
             throw e;
         }
     }
-
     @Override
     public boolean delete(String barcode) throws Exception {
         // UPDATE Administrador
@@ -128,7 +128,6 @@ public class AdministradorDAO extends SQLiteDataHelper implements IDAO<Administr
         // throw e;
         // }
     }
-
     @Override
     public AdministradorDTO readBy(String barcode) throws Exception {
         AdministradorDTO administradorDTO = new AdministradorDTO();
@@ -171,7 +170,6 @@ public class AdministradorDAO extends SQLiteDataHelper implements IDAO<Administr
         }
         return administradorDTO;
     }
-
     @Override
     public Integer getMaxRow() throws Exception {
         String query = " SELECT COUNT(*) TotalReg "

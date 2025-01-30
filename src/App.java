@@ -21,7 +21,7 @@ import GUI.Form.SplashForm;
 public class App {
     public static void main(String[] args) throws Exception {
         try {
-            // new SplashForm();
+            new SplashForm();
             new MainForm("Acces Scand Art", true);
 
             // // Testeo de conexión a la base de datos SQLite para verificar que la
@@ -107,8 +107,7 @@ public class App {
             // for (AdministradorDTO admin : dao5.readAll()) {
             // System.out.println(admin.toString());
             // }
-            // // dao5.delete("1234567890123");
-
+            // dao5.delete("1234567890123");
             // Testeo para el read by Exitoso
             // System.out.println("- ".repeat(25));
             // System.out.println(dao5.readBy("1753193828123"));
