@@ -68,6 +68,10 @@ INSERT INTO Administrador (Codigo, Tipo)
     ,('1234567890124', 2)
     ,('1234567890125', 2);
 
+UPDATE Administrador 
+SET Estado = 'X', FechaModifica = datetime('now','localtime') 
+WHERE Codigo = '1234567890123';
+
 CREATE TABLE Categoria (
     idCategoria         INTEGER PRIMARY KEY AUTOINCREMENT
     ,Nombre             TEXT NOT NULL

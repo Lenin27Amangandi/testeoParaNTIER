@@ -15,7 +15,6 @@ import DataAcces.DTO.AdministradorDTO;
 
 public class AdministradorDAO extends SQLiteDataHelper implements IDAO<AdministradorDTO> {
 
-    
     // Debemos testear esta parte del codigo
     public Integer readTipo(String barcode) throws Exception {
         AdministradorDTO administradorDTO = null;
@@ -72,18 +71,14 @@ public class AdministradorDAO extends SQLiteDataHelper implements IDAO<Administr
             PreparedStatement pstmt = conn.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                AdministradorDTO adminDTO = new AdministradorDTO(rs.getInt(1)
-                                , rs.getString(2)
-                                , rs.getInt(3)
-                                , rs.getString(4)
-                                , rs.getString(5)
-                                , rs.getString(6));
+                AdministradorDTO adminDTO = new AdministradorDTO(rs.getInt(1), rs.getString(2), rs.getInt(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6));
                 list.add(adminDTO);
             }
         } catch (SQLException e) {
             throw e;
         }
-        return list;        
+        return list;
     }
 
     @Override
@@ -100,38 +95,53 @@ public class AdministradorDAO extends SQLiteDataHelper implements IDAO<Administr
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-        throw e;
+            throw e;
         }
     }
 
     @Override
     public boolean delete(String barcode) throws Exception {
-        String query = "DELETE FROM Administrador WHERE Codigo = ? ";
+        // UPDATE Administrador
+        // SET Estado = 'X', FechaModifica = datetime('now','localtime')
+        // WHERE Codigo = '1234567890123';
+
+        String query = "UPDATE Administrador SET Estado = ? WHERE Codigo = ? ";
         try {
             Connection conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
-           // pstmt.setString(1, "X")-<<< previously 1;
-            pstmt.setString(1, barcode);
+            pstmt.setString(1, "X");
+            pstmt.setString(2, barcode);
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             throw e;
         }
+
+        // try {
+        // Connection conn = openConnection();
+        // PreparedStatement pstmt = conn.prepareStatement(query);
+        // // pstmt.setString(1, "X")-<<< previously 1;
+        // pstmt.setString(1, barcode);
+        // pstmt.executeUpdate();
+        // return true;
+        // } catch (SQLException e) {
+        // throw e;
+        // }
     }
 
     @Override
     public AdministradorDTO readBy(String barcode) throws Exception {
         AdministradorDTO administradorDTO = new AdministradorDTO();
 
-        // SELECT idAdministrador 
-        //         , Codigo              
-        //         , Tipo                
-        //         , Estado              
-        //         , FechaCrea           
-        //         , FechaModifica       
-        //         FROM Administrador 
-        //         WHERE Estado='A' 
-        //         AND Codigo = "1753193828123";
+        // SELECT idAdministrador
+        // , Codigo
+        // , Tipo
+        // , Estado
+        // , FechaCrea
+        // , FechaModifica
+        // FROM Administrador
+        // WHERE Estado='A'
+        // AND Codigo = "1753193828123";
 
         String query = "SELECT idAdministrador "
                 + ", Codigo              "
@@ -143,24 +153,22 @@ public class AdministradorDAO extends SQLiteDataHelper implements IDAO<Administr
                 + " WHERE Estado='A' "
                 + "AND Codigo = '" + barcode + "'";
 
-
-
         try {
             Connection conn = openConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-        
+
             while (rs.next()) {
                 administradorDTO = new AdministradorDTO(rs.getInt(1),
-                                rs.getString(2),
-                                rs.getInt(3),
-                                rs.getString(4),
-                                rs.getString(5),
-                                rs.getString(6));
-                    }
-            } catch (Exception e) {
-                throw e;    
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6));
             }
+        } catch (Exception e) {
+            throw e;
+        }
         return administradorDTO;
     }
 
@@ -177,9 +185,9 @@ public class AdministradorDAO extends SQLiteDataHelper implements IDAO<Administr
                 return rs.getInt(1);
             }
         } catch (SQLException e) {
-        throw e;
+            throw e;
         }
-        return 0;    }
-    
+        return 0;
+    }
 
 }

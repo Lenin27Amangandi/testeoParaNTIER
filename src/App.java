@@ -21,6 +21,9 @@ import GUI.Form.SplashForm;
 public class App {
     public static void main(String[] args) throws Exception {
         try {
+            // new SplashForm();
+            new MainForm("Acces Scand Art", true);
+
             // // Testeo de conexión a la base de datos SQLite para verificar que la
             // conexión es exitosa
             // SQLiteDataHelper.testConnection();
@@ -95,15 +98,16 @@ public class App {
             // Integer maxRow4 = dao4.getMaxRow();
             // System.out.println("Número máximo de filas: " + maxRow4);
 
-            // // Testeo de Dao Administrador
+            // //Testeo de Dao Administrador
             // System.out.println();
             // System.out.println("- ".repeat(25));
             // AdministradorDAO dao5 = new AdministradorDAO();
-            // Testeo de create Administrador desde el dao
+            // // //Testeo de create Administrador desde el dao
             // // dao5.create(new AdministradorDTO("1753193828123", 1)); Funciona
             // for (AdministradorDTO admin : dao5.readAll()) {
             // System.out.println(admin.toString());
             // }
+            // // dao5.delete("1234567890123");
 
             // Testeo para el read by Exitoso
             // System.out.println("- ".repeat(25));
@@ -140,14 +144,6 @@ public class App {
             // System.out.println("- ".repeat(25));
             // // // adminBL.add(new AdministradorDTO("1234657891212", 2));
             // System.out.println(adminBL.getAll());
-
-
-
-            // new SplashForm();
-            new MainForm("Acces Scand Art", true);
-
-
-
 
             //
         } catch (Exception e) {

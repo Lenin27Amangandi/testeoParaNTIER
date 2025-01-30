@@ -47,7 +47,6 @@ public class AddAdminPanel extends JPanel {
             this.mode = true;
         });
 
-
         btnDEL.addActionListener(e -> {
             btnDEL.setForeground(Styles.COLOR_FOREGROUND);
             btnADD.setForeground(Styles.COLOR_FOREGROUND_PRESSED);
@@ -76,22 +75,25 @@ public class AddAdminPanel extends JPanel {
         add(southPanel, BorderLayout.SOUTH);
 
         barcodeField.addActionListener(e -> {
-            String barcode = barcodeField.getText();
-            if (!barcode.trim().isEmpty()) {
-                try {
-                    processBarcode(barcode);
-                } catch (Exception e1) {
-                    JOptionPane.showMessageDialog(this, "Error al procesar el código de barras: " + "   ",
-                            "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                barcodeField.setText(""); // Limpiar el campo de texto después de procesar
-            }
+            getBarcodeDeBarcodeField();
         });
 
         // Solicita el foco en el campo de texto cuando el panel se muestra
         SwingUtilities.invokeLater(() -> barcodeField.requestFocusInWindow());
     }
 
+    private void getBarcodeDeBarcodeField() {
+        String barcode = barcodeField.getText();
+        if (!barcode.trim().isEmpty()) {
+            try {
+                processBarcode(barcode);
+            } catch (Exception e1) {
+                JOptionPane.showMessageDialog(this, "Error al procesar el código de barras: " + "   ",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            barcodeField.setText(""); // Limpiar el campo de texto después de procesar
+        }
+    }
 
     private void processBarcode(String barcode) throws Exception {
         if (this.mode) {
@@ -107,37 +109,47 @@ public class AddAdminPanel extends JPanel {
     }
 
     private void delAdmin(String barcode) throws Exception {
-        boolean tipoAdmin = administradorbl.tipoAdmin(barcode);
-        if (tipoAdmin == false && this.mode == false) {
-            messageLabel.setText("El codigo ingresado no pertenece a un administrador");
-        } else {
+
+        int confirm = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que deseas eliminar este Admin?",
+        "Eliminar Admin", JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
             try {
+                // AdministradorDTO adminDelate = new AdministradorDTO(barcode);
                 boolean exito = administradorbl.delete(barcode);
                 if (exito) {
-                    messageLabel.setText("Administrador eliminado con éxito de la base de datos");
+                    messageLabel.setText("Administrador Eliminado con éxito en la base de datos");
+                } else {
+                    messageLabel.setText("No se pudo agregar el administrador");
                 }
             } catch (Exception e) {
-                messageLabel.setText("Ups... No se pudo eliminar el administrador");
+                messageLabel.setText("Ups... No se pudo eliminar el administrador: " + e.getMessage());
                 e.printStackTrace();
             }
+            
+        } else {
+            messageLabel.setText("Escane De nuevo el codigo");
+            
         }
-    }
 
-        // private void addAdmin(String barcode) throws Exception {
-    //     try {
-    //         boolean exito = administradorbl.add(new AdministradorDTO(barcode, 1));
-    //         if (exito) {
-    //             messageLabel.setText("Administrador agregado con éxito en la base de datos");
-    //         }
-    //     } catch (Exception e) {
-    //         messageLabel.setText("Ups... No se pudo agregar el administrador");
-    //         e.printStackTrace();
-    //     }
-    // }
+
+        // if (tipoAdmin == false && this.mode == false) {
+        //     messageLabel.setText("El codigo ingresado no pertenece a un administrador");
+        // } else {
+        //     try {
+        //         boolean exito = administradorbl.delete(barcode);
+        //         if (exito) {
+        //             messageLabel.setText("Administrador eliminado con éxito de la base de datos");
+        //         }
+        //     } catch (Exception e) {
+        //         messageLabel.setText("Ups... No se pudo eliminar el administrador");
+        //         e.printStackTrace();
+        //     }
+        // }
+    }
 
     private void addAdmin(String barcode) throws Exception {
         try {
-    
             // Crear un nuevo AdministradorDTO
             AdministradorDTO admin = new AdministradorDTO(barcode, 1);
             // Intentar agregar el administrador
@@ -155,7 +167,7 @@ public class AddAdminPanel extends JPanel {
         }
     }
 
-        private void showAdminTipoPanel() {
+    private void showAdminTipoPanel() {
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
         if (frame != null) {
             frame.setContentPane(addAdminTipo);
