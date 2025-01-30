@@ -21,7 +21,7 @@ import GUI.Form.SplashForm;
 public class App {
     public static void main(String[] args) throws Exception {
         try {
-            new SplashForm();
+            // new SplashForm();
             new MainForm("Acces Scand Art", true);
 
             // // Testeo de conexión a la base de datos SQLite para verificar que la
